@@ -21,9 +21,9 @@ import nsequence_generator
 
 #1.Preparation
 # record information
-ID = input("Participant ID: ") #please enter the participant ID here. 
-item_number = 25
-correct_number = 5
+ID = 1 #please enter the participant ID here. 
+item_number = 25 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
+correct_number = 5 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
 
 # create the window
 win = visual.Window(size = (800, 600), units = 'pix', color = "black")
@@ -58,17 +58,12 @@ def instruction_display(n):
 kb = keyboard.Keyboard()
 
 
-# Experiment: participants choose which n-back they would like to do and when to stop the exp by themselves.
+#2.Experiment: participants choose which n-back they would like to do and when to stop the exp by themselves.
 answer_list = []
 n_sequence = []
 trial_list = []
 
 for n in range(1,4):
-    
-    # clear three temporary lists
-    answer_list_temp = []
-    n_sequence_temp = []
-    trial_list_temp = []
     
     # create answer_list, n_sequence, and trial_list
     # since they are writen in loop, I create an empty list before the loop and append new lists to the previous ones
@@ -135,6 +130,12 @@ for n in range(1,4):
     trial_list.append(trial_list_temp)
     trial_list.append(['correct rate', 'hit rate', 'false alarm rate', 'reject rate', 'miss rate'])
     trial_list.append([correct_n, hit_n, false_alarm_n, reject_n, miss_n])
+
+win.close()
+
+print(answer_list) #test the answer_list
+print(n_sequence) #test the n_sequence
+print(trial_list) #test the trial_list
  
 # 3. export data
 data = [['ID', 'Anser_List','Letter_Display','Block', 'Key_Pressed', 'Response', 'Reaction_Time','Correct']]
@@ -142,8 +143,8 @@ for sublist in trial_list:
     data.append(sublist)
     
 df = pd.DataFrame(data)
-#print(df) #test the data structure 
+print(df) #test the data structure 
 
-filename = f'sub-{ID:02d}.xlsx' # data filename for each sub.
+filename = f'sub-{ID}.xlsx' # data filename for each sub.
 filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
 df.to_excel(f'{filename}', index=False) #change it to your own directory
