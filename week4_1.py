@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Dec 21 21:29:41 2022
+Created on Mon Jan  9 14:58:28 2023
 
+@author: wyf
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Dec 21 21:29:41 2022
 @author: wyf
 """
 
@@ -9,7 +15,6 @@ Created on Wed Dec 21 21:29:41 2022
 # -*- coding: utf-8 -*-
 """
 Created on Tue Dec 20 15:57:22 2022
-
 @author: luoqi
 """
 
@@ -86,10 +91,10 @@ for n in range(1,4):
     core.wait(2)
     
     correct_n = 0         #count correct trials
-    hit_n = 0             #count hit
-    false_alarm_n = 0     #count false alarm
-    reject_n = 0          #count correct reject
-    miss_n = 0            #count miss
+    hit_n = 1             #count hit
+    false_alarm_n = 2     #count false alarm
+    reject_n = 3          #count correct reject
+    miss_n = 4            #count miss
 
     # display the letter sequence
     # show letter sequence: each letter show for 0.5s and break for 2.5s
@@ -106,12 +111,11 @@ for n in range(1,4):
             trial_list_temp[i].append(0) # record the response as 0/1
             trial_list_temp[i].append("NULL") # record the reaction time
             if trial_list_temp[1] == trial_list_temp[5]:
-                trial_list_temp[i].append(1)
-                correct_n = correct_n + 1
-                reject_n = reject_n + 1
+                trial_list_temp[i].append(1) # record correctness, correct =1, otherwise 0
+                trial_list_temp[i].append(3) #record response based on signal detection theory, hit/false alarm/reject/miss =1/2/3/4
             else:
                 trial_list_temp[i].append(0)
-                false_alarm_n = false_alarm_n + 1
+                trial_list_temp[i].append(2)
         else:
             key = keys[0]
             trial_list_temp[i].append("Y") # record the key pressed
@@ -120,16 +124,15 @@ for n in range(1,4):
             if trial_list_temp[1] == trial_list_temp[5]:
                 trial_list_temp[i].append(1)
                 correct_n = correct_n+1
-                hit_n = hit_n + 1
+                trial_list_temp[i].append(1)
             else:
                 trial_list_temp[i].append(0)
-                miss_n = miss_n + 1
+                trial_list_temp[i].append(4)
     
     answer_list.append(answer_list_temp)
     n_sequence.append(n_sequence_temp)
     trial_list.append(trial_list_temp)
-    trial_list.append(['correct rate', 'hit rate', 'false alarm rate', 'reject rate', 'miss rate'])
-    trial_list.append([correct_n, hit_n, false_alarm_n, reject_n, miss_n])
+    
 
 win.close()
 
@@ -138,7 +141,7 @@ print(n_sequence) #test the n_sequence
 print(trial_list) #test the trial_list
  
 # 3. export data
-data = [['ID', 'Anser_List','Letter_Display','Block', 'Key_Pressed', 'Response', 'Reaction_Time','Correct']]
+data = [['ID', 'Anser_List','Letter_Display','Block', 'Key_Pressed', 'Response', 'Reaction_Time','Correct','Response Type']]
 for sublist in trial_list:
     data.append(sublist)
     
