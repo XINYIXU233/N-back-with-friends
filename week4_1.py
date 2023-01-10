@@ -1,22 +1,15 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  9 14:58:28 2023
-
-@author: wyf
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Dec 21 21:29:41 2022
-@author: wyf
-"""
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Dec 20 15:57:22 2022
+Created on Mon Jan  9 12:59:16 2023
+
 @author: luoqi
 """
+
+## instruction
+# a. please pip install openpyxl and xlwt installed in your computer, since we are using pandas
+
+
 
 import pandas as pd
 from psychopy import visual, event, core
@@ -26,8 +19,9 @@ import nsequence_generator
 #1.Preparation
 # record information
 ID = 1 #please enter the participant ID here. 
-item_number = 7 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
-correct_number = 3 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
+item_number = 5 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
+correct_number = 2 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
+                   # please note that correct number should be no larger than (item_number - 3)
 
 # create the window
 win = visual.Window(size = (800, 600), units = 'pix', color = "black")
@@ -116,8 +110,9 @@ for n in range(1,4):
                 reject_n = reject_n + 1
             else:
                 trial_list_temp[i].append(0)
-                trial_list_temp[i].append(2)
-                false_alarm_n = false_alarm_n + 1
+                trial_list_temp[i].append(4)
+                #false_alarm_n = false_alarm_n + 1
+                miss_n = miss_n + 1
         else:
             key = keys[0]
             trial_list_temp[i].append("Y") # record the key pressed
@@ -130,37 +125,44 @@ for n in range(1,4):
                 hit_n = hit_n + 1
             else:
                 trial_list_temp[i].append(0)
-                trial_list_temp[i].append(4)
-                miss_n = miss_n + 1
+                trial_list_temp[i].append(2)
+                #miss_n = miss_n + 1
+                false_alarm_n = false_alarm_n + 1
     
     answer_list.append(answer_list_temp)
     n_sequence.append(n_sequence_temp)
     trial_list.append(trial_list_temp)
     
 
+thankyou.draw()
+win.flip()
+core.wait(2)
 win.close()
 
-print(answer_list) #test the answer_list
-print(n_sequence) #test the n_sequence
-print(trial_list) #test the trial_list
+# test the lists
+#print(answer_list) #test the answer_list
+#print(n_sequence) #test the n_sequence
+#print(trial_list) #test the trial_list
  
 # 3. export data
 data = [['ID', 'Anser_List','Letter_Display','Block', 'Key_Pressed', 'Response', 'Reaction_Time','Correct','Response Type']]
-for sublist in trial_list:
-    data.append(sublist)
+for block in range(3): #append trial_list for each block (trial_list_temp) to data
+    for sublist in trial_list[block]:
+        data.append(sublist)
+
     
 data_rates = [['correct','hit','false alarm','reject','miss']]
 data_rates.append([round(correct_n/item_number,3), round(hit_n/item_number,3), round(false_alarm_n/item_number,3),
             round(reject_n/item_number, 3),round(miss_n/item_number,3)])
 df = pd.DataFrame(data)
 df_rates = pd.DataFrame(data_rates)
-print(df) #test the data structure 
-print(df_rates)
+#print(df) #test the data structure 
+#print(df_rates)
 
 filename = f'sub-{ID}.xlsx' # data filename for each sub.
-filepath = 'C:/Users/wyf/Desktop/Programming for psychologist/' #path of folder where you save data
+filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
 df.to_excel(f'{filename}', index=False) #change it to your own directory
 
 filename_rates = f'rates-sub-{ID}.xlsx' # data filename for each sub.
-filepath = 'C:/Users/wyf/Desktop/Programming for psychologist/' #path of folder where you save data
+filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
 df_rates.to_excel(f'{filename_rates}', index=False) #change it to your own directory
