@@ -109,7 +109,7 @@ for n in range(1,4):
             trial_list_temp[i].append("NULL") # record the key pressed
             trial_list_temp[i].append(0) # record the response as 0/1
             trial_list_temp[i].append("NULL") # record the reaction time
-            if trial_list_temp[1] == trial_list_temp[5]:
+            if trial_list_temp[i][2] == trial_list_temp[i][6]:
                 trial_list_temp[i].append(1) # record correctness, correct =1, otherwise 0
                 trial_list_temp[i].append(3) #record response based on signal detection theory, hit/false alarm/reject/miss =1/2/3/4
                 correct_n = correct_n + 1
@@ -123,7 +123,7 @@ for n in range(1,4):
             trial_list_temp[i].append("Y") # record the key pressed
             trial_list_temp[i].append(1)  # record the response as 0/1
             trial_list_temp[i].append(key.rt) # record the reaction time
-            if trial_list_temp[1] == trial_list_temp[5]:
+            if trial_list_temp[i][2] == trial_list_temp[i][6]:
                 trial_list_temp[i].append(1)
                 trial_list_temp[i].append(1)
                 correct_n = correct_n + 1
