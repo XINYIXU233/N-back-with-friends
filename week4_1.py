@@ -26,8 +26,8 @@ import nsequence_generator
 #1.Preparation
 # record information
 ID = 1 #please enter the participant ID here. 
-item_number = 5 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
-correct_number = 2 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
+item_number = 7 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
+correct_number = 3 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
 
 # create the window
 win = visual.Window(size = (800, 600), units = 'pix', color = "black")
@@ -150,8 +150,8 @@ for sublist in trial_list:
     data.append(sublist)
     
 data_rates = [['correct','hit','false alarm','reject','miss']]
-data_rates.append([round(correct_n/item_number,3), hit_n/item_number, false_alarm_n/item_number,
-            reject_n/item_number, miss_n/item_number])
+data_rates.append([round(correct_n/item_number,3), round(hit_n/item_number,3), round(false_alarm_n/item_number,3),
+            round(reject_n/item_number, 3),round(miss_n/item_number,3)])
 df = pd.DataFrame(data)
 df_rates = pd.DataFrame(data_rates)
 print(df) #test the data structure 
