@@ -26,7 +26,7 @@ import nsequence_generator
 #1.Preparation
 # record information
 ID = 1 #please enter the participant ID here. 
-item_number = 6 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
+item_number = 5 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
 correct_number = 2 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
 
 # create the window
