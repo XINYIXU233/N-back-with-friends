@@ -18,7 +18,6 @@ Created on Tue Dec 20 15:57:22 2022
 @author: luoqi
 """
 
-import random
 import pandas as pd
 from psychopy import visual, event, core
 from psychopy.hardware import keyboard
@@ -27,8 +26,8 @@ import nsequence_generator
 #1.Preparation
 # record information
 ID = 1 #please enter the participant ID here. 
-item_number = 7 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
-correct_number = 3 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
+item_number = 6 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
+correct_number = 2 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
 
 # create the window
 win = visual.Window(size = (800, 600), units = 'pix', color = "black")
@@ -151,7 +150,7 @@ for sublist in trial_list:
     data.append(sublist)
     
 data_rates = [['correct','hit','false alarm','reject','miss']]
-data_rates.append([correct_n/item_number, hit_n/item_number, false_alarm_n/item_number,
+data_rates.append([round(correct_n/item_number,3), hit_n/item_number, false_alarm_n/item_number,
             reject_n/item_number, miss_n/item_number])
 df = pd.DataFrame(data)
 df_rates = pd.DataFrame(data_rates)
@@ -159,9 +158,9 @@ print(df) #test the data structure
 print(df_rates)
 
 filename = f'sub-{ID}.xlsx' # data filename for each sub.
-filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
+filepath = 'C:/Users/wyf/Desktop/Programming for psychologist/' #path of folder where you save data
 df.to_excel(f'{filename}', index=False) #change it to your own directory
 
 filename_rates = f'rates-sub-{ID}.xlsx' # data filename for each sub.
-filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
-df.to_excel(f'{filename_rates}', index=False) #change it to your own directory
+filepath = 'C:/Users/wyf/Desktop/Programming for psychologist/' #path of folder where you save data
+df_rates.to_excel(f'{filename_rates}', index=False) #change it to your own directory
