@@ -13,4 +13,6 @@ b. nsequence_generator.py is used to generate n-back sequence. test_function.py 
 
 c. nsequence_generator.py, test_function.py, main_exp.py, data_visualization.py, and example_data folder are listed in the same folder.
 
-d. In main_exp.py, please assign participant NO. to ID manually. You can also adjust the item_number and the correct_number at the beginning of this script. Make sure the correct_number ≤ item_number - 3, otherwise it will complain (e.g., there is no sequence with 5 items and 3 correct items in a 3-back block).
+d. in main_exp.py, please assign participant NO. to ID manually. 
+
+e. you can also adjust the item_number and the correct_number at the beginning of this script. Make sure the correct_number ≤ item_number - 3, otherwise it will complain (e.g., there is no sequence with 5 items and 3 correct items in a 3-back block).
