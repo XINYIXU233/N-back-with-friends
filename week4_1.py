@@ -1,22 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 11 13:27:48 2023
-
-@author: wyf
-"""
-
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  9 12:59:16 2023
-@author: luoqi
-"""
-
-## instruction
-# a. please pip install openpyxl and xlwt installed in your computer, since we are using pandas
-
-
-
 import pandas as pd
 from psychopy import visual, event, core
 from psychopy.hardware import keyboard
@@ -163,6 +144,7 @@ df = pd.DataFrame(data)
 df_rates = pd.DataFrame(data_rates)
 #print(df) #test the data structure 
 #print(df_rates)
+
 
 filename = f'data-sub-{ID}.xlsx' # data filename for each sub.
 filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
