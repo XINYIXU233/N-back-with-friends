@@ -1,26 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 11 15:34:20 2023
-
-@author: wyf
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 11 13:27:48 2023
-
-@author: wyf
-"""
-
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  9 12:59:16 2023
-@author: luoqi
-"""
+# N-back Script
+# Qi Luo (r0869016)
+# Xinyi Xu (r0870845)
+# Yufei Wu 
 
 ## instruction
 # a. please pip install openpyxl and xlwt installed in your computer, since we are using pandas
+# b. please change the outputfile path
 
 
 
