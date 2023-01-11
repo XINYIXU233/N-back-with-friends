@@ -15,7 +15,7 @@ import glob as gb
 import numpy as np
 
 # 1.read data files
-files = gb.glob('data*.xlsx') 
+files = gb.glob('example_data/data*.xlsx') 
 files.reverse()
 # read data for all subjects
 data = []
@@ -56,17 +56,16 @@ plt.setp(ax,xticks = ind ,xticklabels=blocks)
 
 ax[0].bar(ind,meanrts,width = 0.2, align='center', alpha=0.5)
 ax[0].title.set_text('mean reaction time')
-ax[0].errorbar(ind,meanrts,yerr=0.5,fmt = 'o',color="black")
 
 ax[1].bar(ind,accs,width = 0.2, align='center', alpha=0.5)
 ax[1].title.set_text('accuracy rate')
-ax[1].errorbar(ind,accs,yerr = 0.5,fmt='o',color="black")
-ax[1].set(ylim = (min(accs)-0.2,1))
+ax[1].set(ylim = (min(accs)-0.1,1))
 
 ax[2].violinplot(rts, ind, points=20, widths=0.3,
                      showmeans=True, showextrema=True, showmedians=True)
 ax[2].title.set_text('reaction times')
 
+plt.savefig('plots.png')
 plt.show()
 
 
