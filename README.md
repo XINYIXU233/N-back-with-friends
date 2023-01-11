@@ -13,4 +13,4 @@ b. please adjust the output file path.
 
 c. please assign a value to ID manually.
 
-c. you can also adjust the item_number and the correct_number at the beginning of this script. Make sure the correct_number ≤ item_number - 3, otherwise it will complain (e.g., there is no sequence with 5 items and 3 correct items in a 3-back block).
+d. you can also adjust the item_number and the correct_number at the beginning of this script. Make sure the correct_number ≤ item_number - 3, otherwise it will complain (e.g., there is no sequence with 5 items and 3 correct items in a 3-back block).
