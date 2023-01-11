@@ -7,8 +7,6 @@
 # a. please pip install openpyxl and xlwt installed in your computer, since we are using pandas
 # b. please change the outputfile path
 
-
-
 import pandas as pd
 from psychopy import visual, event, core
 from psychopy.hardware import keyboard
@@ -16,9 +14,9 @@ import nsequence_generator
 
 #1.Preparation
 # record information
-ID = 1 #please enter the participant ID here. 
-item_number = 4 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
-correct_number = 1 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
+ID = 4 #please enter the participant ID here. For sub 1, just type 1; for sub 12, just type 12.
+item_number = 20 # you can define how many trials to present in each block by chaning the number. Here we are going to present 20 letters in each block in total
+correct_number = 5 # you can define how many many trials are correct in each block. Here we have 10 correct trials in each block
                    # please note that correct number should be no larger than (item_number - 3)
 
 # create the window
@@ -33,7 +31,7 @@ thankyou = visual.TextStim(win, "Thank you for participating the experiment!", c
 welcome.draw()
 win.flip()
 
-core.wait(3)
+core.wait(1)
 win.flip()
 
 
@@ -54,7 +52,7 @@ def instruction_display(n):
 kb = keyboard.Keyboard()
 
 
-# 2.Experiment: participants choose which n-back they would like to do and when to stop the exp by themselves.
+#2.Experiment: participants choose which n-back they would like to do and when to stop the exp by themselves.
 answer_list = []
 n_sequence = []
 trial_list = []
@@ -88,7 +86,7 @@ for n in range(1,4):
     miss_n = 0            #count miss
     
     kb.clearEvents()
-    
+
     # display the letter sequence
     # show letter sequence: each letter show for 0.5s and break for 2.5s
     for i in range(len(n_sequence_temp)):
@@ -135,10 +133,10 @@ for n in range(1,4):
 
 thankyou.draw()
 win.flip()
-core.wait(2)
+core.wait(1)
 win.close()
 
-
+ 
 # 3. export data
 data = [['ID', 'Anser_List','Letter_Display','Block', 'Key_Pressed', 'Response', 'Reaction_Time','Correct','Response Type']]
 for block in range(3): #append trial_list for each block (trial_list_temp) to data
@@ -152,11 +150,10 @@ data_rates.append([round(correct_n/item_number,3), round(hit_n/item_number,3), r
 df = pd.DataFrame(data)
 df_rates = pd.DataFrame(data_rates)
 
-
 filename = f'data-sub-{ID}.xlsx' # data filename for each sub.
-filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
-df.to_excel(f'{filename}', index=False) #change it to your own directory
+filepath = '/Users/luoqi/Desktop/example_data/' #path of folder where you save data
+df.to_excel(f'{filepath}{filename}', index=False) #change it to your own directory
 
 filename_rates = f'rates-sub-{ID}.xlsx' # data filename for each sub.
-filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
-df_rates.to_excel(f'{filename_rates}', index=False) #change it to your own directory
+filepath = '/Users/luoqi/Desktop/example_data/' #path of folder where you save data
+df_rates.to_excel(f'{filepath}{filename_rates}', index=False) #change it to your own directory
