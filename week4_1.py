@@ -1,8 +1,14 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jan 11 13:27:48 2023
+
+@author: wyf
+"""
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Mon Jan  9 12:59:16 2023
-
 @author: luoqi
 """
 
@@ -19,8 +25,8 @@ import nsequence_generator
 #1.Preparation
 # record information
 ID = 1 #please enter the participant ID here. 
-item_number = 5 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
-correct_number = 2 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
+item_number = 4 # you can define how many trials to present in each block by chaning the number. Here we are going to present 25 letters in each block in total
+correct_number = 1 # you can define how many many trials are correct in each block. Here we have 5 correct trials in each block
                    # please note that correct number should be no larger than (item_number - 3)
 
 # create the window
@@ -95,6 +101,7 @@ for n in range(1,4):
         letter_display.text = trial_list_temp[i][2]
         letter_display.draw()
         win.flip()
+        kb.clock.reset()
         core.wait(0.5)
         win.flip()
         core.wait(2.5)
@@ -111,7 +118,6 @@ for n in range(1,4):
             else:
                 trial_list_temp[i].append(0)
                 trial_list_temp[i].append(4)
-                #false_alarm_n = false_alarm_n + 1
                 miss_n = miss_n + 1
         else:
             key = keys[0]
@@ -126,7 +132,6 @@ for n in range(1,4):
             else:
                 trial_list_temp[i].append(0)
                 trial_list_temp[i].append(2)
-                #miss_n = miss_n + 1
                 false_alarm_n = false_alarm_n + 1
     
     answer_list.append(answer_list_temp)
