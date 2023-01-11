@@ -9,7 +9,7 @@ Instruction
 
 a. please pip install openpyxl and xlwt in your computer, since we are using pandas.
 
-b. nsequence_generator.py is used to generate n-back sequence. test_function.py is used to test validity of nsequence_generator. main_exp.py contains the script for psychopy project. example_data contains three example data. data_visualization is used to read example data and create plots.
+b. nsequence_generator.py is used to generate n-back sequence. test_function.py is used to test validity of nsequence_generator. main_exp.py contains the script for psychopy project. example_data contains three example data. data_visualization is used to read example data and create plots. plots.png is the plot for example data, drawed using data_visualization.py.
 
 c. nsequence_generator.py, test_function.py, main_exp.py, data_visualization.py, and example_data folder are listed in the same folder.
 
