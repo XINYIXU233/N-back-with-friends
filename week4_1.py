@@ -159,7 +159,7 @@ df_rates = pd.DataFrame(data_rates)
 #print(df) #test the data structure 
 #print(df_rates)
 
-filename = f'sub-{ID}.xlsx' # data filename for each sub.
+filename = f'data-sub-{ID}.xlsx' # data filename for each sub.
 filepath = '/Users/luoqi/Desktop/' #path of folder where you save data
 df.to_excel(f'{filename}', index=False) #change it to your own directory
 
