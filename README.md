@@ -1,5 +1,8 @@
 # N-back-with-friends
 N-back 
+# Qi Luo (r0869016)
+# Xinyi Xu (r0870845)
+# Yufei Wu (r0864912)
 
 This is the N-back.py.
 
