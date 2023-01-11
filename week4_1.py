@@ -1,7 +1,7 @@
 # N-back Script
 # Qi Luo (r0869016)
 # Xinyi Xu (r0870845)
-# Yufei Wu 
+# Yufei Wu (r0864912)
 
 ## instruction
 # a. please pip install openpyxl and xlwt installed in your computer, since we are using pandas
