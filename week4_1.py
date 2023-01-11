@@ -1,3 +1,29 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jan 11 15:34:20 2023
+
+@author: wyf
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jan 11 13:27:48 2023
+
+@author: wyf
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jan  9 12:59:16 2023
+@author: luoqi
+"""
+
+## instruction
+# a. please pip install openpyxl and xlwt installed in your computer, since we are using pandas
+
+
+
 import pandas as pd
 from psychopy import visual, event, core
 from psychopy.hardware import keyboard
@@ -43,7 +69,7 @@ def instruction_display(n):
 kb = keyboard.Keyboard()
 
 
-#2.Experiment: participants choose which n-back they would like to do and when to stop the exp by themselves.
+# 2.Experiment: participants choose which n-back they would like to do and when to stop the exp by themselves.
 answer_list = []
 n_sequence = []
 trial_list = []
@@ -75,7 +101,9 @@ for n in range(1,4):
     false_alarm_n = 0     #count false alarm
     reject_n = 0          #count correct reject
     miss_n = 0            #count miss
-
+    
+    kb.clearEvents()
+    
     # display the letter sequence
     # show letter sequence: each letter show for 0.5s and break for 2.5s
     for i in range(len(n_sequence_temp)):
@@ -125,11 +153,7 @@ win.flip()
 core.wait(2)
 win.close()
 
-# test the lists
-#print(answer_list) #test the answer_list
-#print(n_sequence) #test the n_sequence
-#print(trial_list) #test the trial_list
- 
+
 # 3. export data
 data = [['ID', 'Anser_List','Letter_Display','Block', 'Key_Pressed', 'Response', 'Reaction_Time','Correct','Response Type']]
 for block in range(3): #append trial_list for each block (trial_list_temp) to data
@@ -142,8 +166,6 @@ data_rates.append([round(correct_n/item_number,3), round(hit_n/item_number,3), r
             round(reject_n/item_number, 3),round(miss_n/item_number,3)])
 df = pd.DataFrame(data)
 df_rates = pd.DataFrame(data_rates)
-#print(df) #test the data structure 
-#print(df_rates)
 
 
 filename = f'data-sub-{ID}.xlsx' # data filename for each sub.
